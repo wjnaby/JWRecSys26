@@ -37,17 +37,31 @@ body, html {
 
 /* Full height image header */
 .bgimg-1 {
-  background-position: top;
+  background-position: center;
   background-size: cover;
-  background-attachment:fixed;
   background-image: url(images/banner.jpg);
-  min-height:100%;
+  min-height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
-  background-blend-mode: overlay; 
+  background-blend-mode: overlay;
+}
+@media (max-width: 601px) {
+  .bgimg-1 { background-attachment: scroll; }
 }
 
 .w3-bar .w3-button {
   padding: 16px;
+}
+
+/* Mobile-friendly dashboard */
+@media (max-width: 992px) {
+  .w3-container.w3-content { padding-left: 16px; padding-right: 16px; max-width: 100% !important; }
+  .dashboard-cards .w3-col { width: 100% !important; margin-bottom: 16px; }
+}
+@media (max-width: 601px) {
+  .w3-container.w3-content { padding-left: 12px; padding-right: 12px; }
+  .w3-padding-32 { padding-top: 16px !important; padding-bottom: 16px !important; }
+  .w3-card { margin: 0 0 12px !important; }
+  .w3-padding-24 { padding: 16px !important; }
 }
 </style>
 
@@ -67,8 +81,7 @@ body, html {
 
 	<!-- Page Container -->
 	<div class="w3-container w3-content" style="max-width:1000px;">    
-	  <!-- The Grid -->
-	  <div class="w3-row">
+	  <div class="w3-row dashboard-cards">
 	  
 
 		<div class="w3-padding w3-padding-16">
@@ -78,9 +91,7 @@ body, html {
 				</div>
 				
 				<div class="w3-row w3-padding-24">
-		
-					
-					<div class="w3-col m4 w3-container">
+					<div class="w3-col s12 m4 w3-container w3-margin-bottom" style="margin-bottom:16px">
 						<div class=" w3-card w3-amber w3-round w3-padding-16">
 							<div class="w3-container w3-large">
 								Cafe <i class="fa fa-utensils fa-lg w3-right"></i> 
@@ -90,7 +101,7 @@ body, html {
 						</div>
 					</div>
 					
-					<div class="w3-col m4 w3-container">
+					<div class="w3-col s12 m4 w3-container w3-margin-bottom" style="margin-bottom:16px">
 						<div class=" w3-card w3-amber w3-round w3-padding-16">
 							<div class="w3-container w3-large">
 								User <i class="fa fa-users fa-lg w3-right"></i> 
@@ -100,7 +111,7 @@ body, html {
 						</div>
 					</div>
 					
-					<div class="w3-col m4 w3-container">
+					<div class="w3-col s12 m4 w3-container">
 						<div class=" w3-card w3-amber w3-round w3-padding-16">
 							<div class="w3-container w3-large">
 								Review <i class="fa fa-star fa-lg w3-right"></i> 

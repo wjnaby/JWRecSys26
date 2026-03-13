@@ -55,6 +55,8 @@ $data		= mysqli_fetch_array($result);
 $photo_raw = $data["photo"];
 $photos_list = $photo_raw ? array_map('trim', explode(',', $photo_raw)) : array();
 $photo = !empty($photos_list) ? $photos_list[0] : "noimage.jpg";
+$food_photos_raw = isset($data["food_photos"]) ? trim($data["food_photos"]) : '';
+$food_photos_list = $food_photos_raw ? array_map('trim', explode(',', $food_photos_raw)) : array();
 
 
 function timeago($date) {
@@ -128,14 +130,16 @@ a:link {
 
 			<div class="w3-row">
 				<div class="w3-col m5 w3-padding-16">
-					<?PHP if(count($photos_list) > 1) { ?>
-					<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;">
-						<?PHP foreach($photos_list as $p) { ?>
-						<a href="upload/<?PHP echo htmlspecialchars($p);?>" target="_blank"><img src="upload/<?PHP echo htmlspecialchars($p);?>" class="w3-round w3-border" style="width:100%;height:100px;object-fit:cover;"></a>
-						<?PHP } ?>
+					<img src="upload/<?PHP echo $photo;?>" class="w3-image w3-round" style="margin-bottom:16px">
+					<?PHP if(!empty($food_photos_list)) { ?>
+					<div class="w3-margin-top">
+						<b>Food & Cafe</b>
+						<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px;margin-top:8px">
+							<?PHP foreach($food_photos_list as $fp) { ?>
+							<a href="upload/<?PHP echo htmlspecialchars($fp);?>" target="_blank"><img src="upload/<?PHP echo htmlspecialchars($fp);?>" class="w3-round w3-border" style="width:100%;height:90px;object-fit:cover;"></a>
+							<?PHP } ?>
+						</div>
 					</div>
-					<?PHP } else { ?>
-					<img src="upload/<?PHP echo $photo;?>" class="w3-image w3-round">
 					<?PHP } ?>
 				</div>
 				<div class="w3-col m7 w3-padding">
